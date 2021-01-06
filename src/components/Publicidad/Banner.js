@@ -1,8 +1,8 @@
 import Boton from "../common/Boton";
 
-const Banner = ({ titulo, descuento, boton }) => {
+const Banner = ({ titulo, descuento, boton, className }) => {
   return (
-    <div className="banner banner-descuentos">
+    <div className={`banner banner-descuentos ${className}`}>
       <h1>{titulo}</h1>
       <div className="descuentos__porcentaje descuentos__porcentaje-blanco">
         <span>Hasta</span>
