@@ -1,0 +1,18 @@
+$breakpoints: (
+  "Tablet": (
+    min-width: 768px,
+  ),
+  "Desktop": (
+    min-width: 1440px,
+  ),
+) !default;
+
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "No available breakpoint";
+  }
+}

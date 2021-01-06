@@ -1,0 +1,56 @@
+@import ../base/variables
+@import ../mixins/Breakpoint
+.producto
+    background: $gris
+    display: flex
+    flex-direction: column
+    margin-top: 65px
+    padding: 30px 15px
+    position: relative
+    text-align: center
+    &__imagenes
+        background: $negro
+        height: 450px
+        margin-bottom: 25px
+        width: 100%
+    .wrapper
+        position: relative
+    &__compania
+        font-weight: bolder
+        text-transform: uppercase
+        margin-bottom: 10px
+    &__nombre
+        font-weight: 400
+        margin-bottom: 10px
+    &__precio
+        display: block
+        font-weight: 900
+        margin-bottom: 20px
+    .error
+        font-size: 12px
+        font-weight: bolder
+        position: absolute
+        text-transform: uppercase
+        bottom: -18px
+        left: 15px
+    @include media('Tablet')
+        padding: 60px 30px
+    @include media('Desktop')
+        flex-direction: row
+        align-items: center
+        padding: 60px 30px
+        &__imagenes
+            width: 50%
+        &__compania
+            font-size: 20px
+        &__nombre
+            font-size: 30px
+        &__precio
+            font-size: 25px
+        .wrapper
+            width: 50%
+        .counter
+            margin: 0 auto
+            width: 80%
+        .error
+            left: 80px

@@ -1,0 +1,44 @@
+@import ../base/variables
+.cart
+    margin-top: 70px
+.btn
+    border: none
+    cursor: pointer
+    font-size: 12px
+    font-weight: bolder
+    text-transform: uppercase
+    outline: none
+    padding: 15px 30px
+    &-black
+        background: $negro
+        box-shadow: 1px 1px 2px $negro
+        color: $blanco
+        &:hover
+            background: lighten($negro, 10%)
+    &-white
+        background: $blanco
+        color: $negro
+        &:hover
+            background: darken($blanco, 10%)
+.counter
+    display: flex
+    justify-content: space-between
+    width: 100%
+    .sum
+        align-items: center
+        background: $blanco
+        box-shadow: 0px 0px 2px $negro
+        cursor: pointer
+        display: flex
+        font-size: 16px
+        font-weight: bolder
+        justify-content: space-between
+        padding: 15px 10px
+        width: 30%
+        &__cantidad
+            font-size: 18px
+            cursor: default
+        span::selection
+            background: none
+    .btn
+        width: 70%

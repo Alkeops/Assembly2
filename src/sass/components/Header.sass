@@ -1,0 +1,30 @@
+@import ../mixins/Breakpoint
+@import ../base/variables
+
+.header
+    align-items: center
+    background: $blanco
+    box-shadow: 0px 0px 4px $negro
+    display: flex
+    height: 65px
+    justify-content: space-between
+    left: 0
+    padding: 0 15px
+    position: fixed
+    right: 0
+    top: 0
+    z-index: 99
+    &__logo
+    &__iconos
+        svg
+            font-size: 25px
+        span
+            display: none
+    @include media('Desktop')
+        padding: 0 50px
+        &__logo
+            order: 1
+        .menu
+            order: 2
+        &__iconos
+            order: 3
