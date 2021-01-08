@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
-const SliderCategoriaItem = () => {
+const SliderCategoriaItem = ({
+  nombre,
+  id,
+  descripcion,
+  precio,
+  categoria,
+}) => {
   return (
-    <Link to="/gabinetes/1234444">
+    <Link to={`/${categoria}/${id}`}>
       <div className="item-portada">
         <div className="item-portada__imagen"></div>
-        <h4 className="item-portada__nombre">Procesador i9</h4>
-        <p className="item-portada__descripcion">El mejor bla bla bla</p>
-        <span className="item-portada__precio">$20,000.00</span>
+        <div className="item-portada__info">
+          <h4 className="item-portada__nombre">{nombre}</h4>
+          <p className="item-portada__descripcion">{descripcion}</p>
+          <span className="item-portada__precio">{precio}</span>
+        </div>
       </div>
     </Link>
   );

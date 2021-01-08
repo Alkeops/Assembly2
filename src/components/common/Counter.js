@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import Boton from "./Boton";
 
-const Counter = ({ stock = 5, initial = 1, onAdd }) => {
-  const [counter, setCounter] = useState(initial);
+const Counter = ({ stock = 5, initial = 1, onAdd, counter, setCounter }) => {
   const [error, setError] = useState("");
   const suma = () => {
     if (counter === stock) {
@@ -31,9 +30,13 @@ const Counter = ({ stock = 5, initial = 1, onAdd }) => {
     <>
       <div className="counter">
         <div className="sum">
-          <span onClick={resta}>-</span>
+          <span onClick={resta} className="sum__btn">
+            -
+          </span>
           <span className="sum__cantidad">{counter}</span>
-          <span onClick={suma}>+</span>
+          <span onClick={suma} className="sum__btn">
+            +
+          </span>
         </div>
         <Boton content="Agregar" className="btn btn-black" onClick={onAdd} />
       </div>

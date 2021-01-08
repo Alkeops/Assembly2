@@ -7,7 +7,7 @@ const BannerDescuentos = () => {
       <h1>Descuentos</h1>
       <div className="descuentos__porcentaje descuentos__porcentaje-rojo">
         <span>Hasta</span>
-        <span>50%</span>
+        <span>75%</span>
         <span>Descuento</span>
       </div>
       <p>*Solo productos participantes, aplican restricciones</p>

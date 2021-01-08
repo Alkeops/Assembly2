@@ -16,9 +16,25 @@
     z-index: 99
     &__logo
     &__iconos
+        position: relative
+        .cantidad
+            position: absolute
+            top: -7px
+            transform: rotate(10deg)
+            left: 8px
+            z-index: -1
+            background: $rojo
+            color: $blanco
+            width: 24px
+            border-radius: 20px
+            text-align: center
+            height: 19px
+            font-size: 18px
+            font-weight: bolder
+            font-family: Helvetica, Arial, sans-serif
         svg
-            font-size: 25px
-        span
+            font-size: 30px
+        .palabra
             display: none
     @include media('Desktop')
         padding: 0 50px
@@ -26,5 +42,12 @@
             order: 1
         .menu
             order: 2
-        &__iconos
+        .vista-previa
             order: 3
+        &__iconos
+            align-items: center
+            display: flex
+            .palabra
+                margin-left: 5px
+                display: block
+                font-size: 12px
