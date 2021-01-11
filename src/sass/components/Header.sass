@@ -18,20 +18,20 @@
     &__iconos
         position: relative
         .cantidad
-            position: absolute
-            top: -7px
-            transform: rotate(10deg)
-            left: 8px
-            z-index: -1
             background: $rojo
-            color: $blanco
-            width: 24px
             border-radius: 20px
-            text-align: center
-            height: 19px
+            color: $blanco
+            font-family: Helvetica, Arial, sans-serif
             font-size: 18px
             font-weight: bolder
-            font-family: Helvetica, Arial, sans-serif
+            height: 19px
+            left: 8px
+            position: absolute
+            transform: rotate(10deg)
+            text-align: center
+            top: -19px
+            width: 24px
+            z-index: -1
         svg
             font-size: 30px
         .palabra
@@ -47,7 +47,9 @@
         &__iconos
             align-items: center
             display: flex
+            .cantidad
+                top: -8px
             .palabra
-                margin-left: 5px
                 display: block
                 font-size: 12px
+                margin-left: 5px

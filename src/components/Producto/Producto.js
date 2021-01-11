@@ -29,6 +29,7 @@ const Producto = ({
         id: product.id,
         nombre: product.nombre,
         quantity: counter,
+        precio: product.precio,
       },
     });
     setCounter(1);

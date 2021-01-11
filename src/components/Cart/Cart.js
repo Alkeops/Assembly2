@@ -1,18 +1,56 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import CartItem from "./CartItem";
 import { cart } from "./CartProvider";
 
 const Cart = () => {
   const { dispatch } = useContext(cart);
-  const { cantidadArticulos, productosEnCart } = useContext(cart).stateCart;
-  console.log(productosEnCart);
+  const { productosEnCart, cantidadArticulos } = useContext(cart).stateCart;
+  const [totales, setTotales] = useState(0);
+  const [carrito, setCarrito] = useState([]);
   const finalizar = () => {
     dispatch({
       type: "CLEAN_CART",
     });
+    setTotales(0);
   };
+  useEffect(() => {
+    if (productosEnCart.length) {
+      let totalPrecio = productosEnCart.reduce(
+        (sum, value) => sum + value.precio * value.quantity,
+        0
+      );
+      setTotales(totalPrecio);
+    }
+    setCarrito(productosEnCart.sort((a, b) => a.nombre > b.nombre));
+  }, [productosEnCart]);
+
   return (
     <div className="cart">
-      <h1>{cantidadArticulos}</h1> <h1 onClick={finalizar}>Limpiar Carrito</h1>
+      {cantidadArticulos !== 0 ? (
+        <>
+          <h1 className="cart__entrada">
+            Articulos en tu carrito ({cantidadArticulos})
+          </h1>
+          <div className="cart__totales">
+            <h3>TOTAL A PAGAR:</h3>
+            <span>{totales}</span>
+          </div>
+        </>
+      ) : (
+        <h1 className="cart__vacio">Tu carrito esta vacio</h1>
+      )}
+      {carrito.map(({ nombre, id, precio, quantity }) => (
+        <CartItem
+          dispatch={dispatch}
+          key={id}
+          nombre={nombre}
+          id={id}
+          precio={precio}
+          cantidad={quantity}
+          setTotales={setTotales}
+        />
+      ))}
+      {cantidadArticulos !== 0 && <h1 onClick={finalizar}>VACIAR</h1>}
     </div>
   );
 };

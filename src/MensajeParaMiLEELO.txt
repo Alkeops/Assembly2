@@ -1,0 +1,1 @@
+Hacer popups estilo toastify o el estilo, usa un context con un useState abierto cerrado, si es true que se muestre false que se oculte. Y un setTimeout para volverlo false

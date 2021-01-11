@@ -13,9 +13,10 @@ const CartProvider = ({ children }) => {
     state.findIndex((elemento) => elemento.id === id);
 
   const [stateCart, dispatch] = useReducer((state, { type, payload }) => {
+    const posicion = idExists(state.productosEnCart, payload.id);
+    let modificado = Object.assign({}, state.productosEnCart[posicion]);
     switch (type) {
       case "ADD_PRODUCT":
-        const posicion = idExists(state.productosEnCart, payload.id);
         if (posicion < 0)
           return {
             cantidadTotal: state.cantidadTotal + 1,
@@ -23,7 +24,6 @@ const CartProvider = ({ children }) => {
             productosEnCart: [...state.productosEnCart, payload],
           };
         else {
-          let modificado = state.productosEnCart[posicion];
           modificado = {
             ...modificado,
             quantity: modificado.quantity + payload.quantity,
@@ -31,19 +31,37 @@ const CartProvider = ({ children }) => {
           return {
             ...state,
             cantidadArticulos: state.cantidadArticulos + payload.quantity,
-            productosEnCart: [
-              ...state.productosEnCart.filter((prod) => prod.id !== payload.id),
-              modificado,
-            ],
+            productosEnCart: [...difState(state, payload.id), modificado],
           };
         }
       case "DELETE_PRODUCT":
         return {
           ...state,
           cantidadTotal: state.cantidadTotal - 1,
-          cantidadArticulos: state.cantidadArticulos - payload.quantity,
+          cantidadArticulos: state.cantidadArticulos - modificado.quantity,
+          productosEnCart: [...difState(state, payload.id)],
+        };
+      case "MODIFY_PRODUCT":
+        if (modificado.quantity === 1 && !payload.suma)
+          return {
+            ...state,
+            cantidadTotal: state.cantidadTotal - 1,
+            cantidadArticulos: state.cantidadArticulos - 1,
+            productosEnCart: [...difState(state, payload.id)],
+          };
+        return {
+          ...state,
+          cantidadArticulos: payload.suma
+            ? state.cantidadArticulos + 1
+            : state.cantidadArticulos - 1,
           productosEnCart: [
-            ...state.productosEnCart.filter((prod) => prod.id !== payload.id),
+            ...difState(state, payload.id),
+            (modificado = {
+              ...modificado,
+              quantity: payload.suma
+                ? modificado.quantity + 1
+                : modificado.quantity - 1,
+            }),
           ],
         };
       case "CLEAN_CART":
@@ -55,4 +73,6 @@ const CartProvider = ({ children }) => {
   return <Provider value={{ stateCart, dispatch }}>{children}</Provider>;
 };
 
+const difState = (state, id) =>
+  state.productosEnCart.filter((prod) => prod.id !== id);
 export { cart, CartProvider };
