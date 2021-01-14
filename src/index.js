@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "App";
 import { BrowserRouter } from "react-router-dom";
-import { CartProvider } from "./components/Cart/CartProvider";
+import { CartProvider } from "components/Cart/CartProvider";
 import { debugContextDevtool } from "react-context-devtool";
-import "./sass/style.sass";
+import "sass/style.sass";
 
 const root = document.getElementById("root");
 

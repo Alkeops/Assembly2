@@ -1,8 +1,8 @@
-import Header from "./components/Header/Header";
-import Home from "./components/Home";
+import Header from "components/Header/Header";
+import Home from "components/Home";
 import { Redirect, Route, Switch } from "react-router-dom";
-import Producto from "./components/Producto/Producto";
-import Cart from "./components/Cart/Cart";
+import Producto from "components/Producto/Producto";
+import Cart from "components/Cart/Cart";
 
 function App() {
   return (

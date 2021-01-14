@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import CartItem from "./CartItem";
+import CartPayment from "./CartPayment";
 import { cart } from "./CartProvider";
 
 const Cart = () => {
@@ -27,30 +28,28 @@ const Cart = () => {
   return (
     <div className="cart">
       {cantidadArticulos !== 0 ? (
-        <>
-          <h1 className="cart__entrada">
-            Articulos en tu carrito ({cantidadArticulos})
-          </h1>
-          <div className="cart__totales">
-            <h3>TOTAL A PAGAR:</h3>
-            <span>{totales}</span>
-          </div>
-        </>
+        <CartPayment cantidadArticulos={cantidadArticulos} totales={totales} />
       ) : (
         <h1 className="cart__vacio">Tu carrito esta vacio</h1>
       )}
-      {carrito.map(({ nombre, id, precio, quantity }) => (
-        <CartItem
-          dispatch={dispatch}
-          key={id}
-          nombre={nombre}
-          id={id}
-          precio={precio}
-          cantidad={quantity}
-          setTotales={setTotales}
-        />
-      ))}
-      {cantidadArticulos !== 0 && <h1 onClick={finalizar}>VACIAR</h1>}
+      <div className="cart__productos">
+        {carrito.map(({ nombre, id, precio, quantity }) => (
+          <CartItem
+            dispatch={dispatch}
+            key={id}
+            nombre={nombre}
+            id={id}
+            precio={precio}
+            cantidad={quantity}
+            setTotales={setTotales}
+          />
+        ))}
+        {cantidadArticulos !== 0 && (
+          <h1 className="cart__vaciar" onClick={finalizar}>
+            VACIAR EL CARRITO
+          </h1>
+        )}
+      </div>
     </div>
   );
 };

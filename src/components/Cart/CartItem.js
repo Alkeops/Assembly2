@@ -12,21 +12,42 @@ const CartItem = ({ precio, cantidad, nombre, id, dispatch, setTotales }) => {
     });
   };
   return (
-    <>
-      <h3>{nombre}</h3>
-      <h3>{id}</h3>
-      <h3>{precio}</h3>
-      <h3>{cantidad}</h3>
-      <button className="btn btn-black" onClick={() => modificarCarrito()}>
-        Menos 1
-      </button>
-      <button className="btn btn-black" onClick={() => modificarCarrito(true)}>
-        Mas 1
-      </button>
-      <button className="btn btn-black" onClick={eliminarCarrito}>
-        Eliminar
-      </button>
-    </>
+    <div className="card-item">
+      <div className="card-item__foto"></div>
+      <div className="card-item__info">
+        <span className="card-item__nombre">{nombre}</span>
+
+        <div className="card-item__cantidad">
+          <span>Cantidad: </span>
+          <button
+            className="btn-cantidad menos"
+            onClick={() => modificarCarrito()}
+          >
+            -
+          </button>
+          <p>{cantidad}</p>
+          <button
+            className="btn-cantidad"
+            onClick={() => modificarCarrito(true)}
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <div className="card-item__subtotal">
+        <div className="precio">
+          <p>Precio Unitario: </p>
+          <span className="card-item__precio">{precio}</span>
+        </div>
+        <div className="precio">
+          <p>Subtotal: </p>
+          <span className="card-item__precio">{precio}</span>
+        </div>
+      </div>
+      <span className="card-item__eliminar" onClick={eliminarCarrito}>
+        X Eliminar
+      </span>
+    </div>
   );
 };
 

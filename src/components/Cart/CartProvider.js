@@ -67,7 +67,7 @@ const CartProvider = ({ children }) => {
       case "CLEAN_CART":
         return { ...initialState };
       default:
-        throw new Error("Imposible");
+        throw new Error("...");
     }
   }, initialState);
   return <Provider value={{ stateCart, dispatch }}>{children}</Provider>;

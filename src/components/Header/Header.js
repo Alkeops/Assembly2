@@ -1,10 +1,10 @@
 import { FaOpencart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { cart } from "../Cart/CartProvider";
+import { cart } from "components/Cart/CartProvider";
 import Menu from "./Menu";
 const Header = () => {
-  const { cantidadTotal } = useContext(cart).stateCart;
+  const { cantidadTotal, cantidadArticulos } = useContext(cart).stateCart;
   return (
     <header className="header">
       <Menu />
@@ -14,7 +14,7 @@ const Header = () => {
       <div className="vista-previa">
         <Link to="/cart" className="header__iconos">
           {cantidadTotal ? (
-            <span className="cantidad">{cantidadTotal}</span>
+            <span className="cantidad">{cantidadArticulos}</span>
           ) : null}
           <FaOpencart />
           <span className="palabra">CARRITO</span>
