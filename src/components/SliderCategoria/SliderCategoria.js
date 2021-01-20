@@ -1,14 +1,17 @@
+import { cargarProductos } from "config/firebase/firestoreService";
 import { useEffect, useState } from "react";
-import productos from "../../productos";
+
 import SliderCategoriaItem from "./SliderCategoriaItem";
 
 const SliderCategoria = ({ categoria }) => {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    productos.then((res) => {
-      setProduct(res);
-    });
+    docs();
   }, []);
+  const docs = async () => {
+    const docs = await cargarProductos();
+    setProduct(docs);
+  };
   return (
     <div className="slider-categoria">
       <h3 className="slider-categoria__nombre">{categoria}</h3>
