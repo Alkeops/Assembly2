@@ -10,10 +10,10 @@ const { Provider } = cart;
 
 const CartProvider = ({ children }) => {
   const idExists = (state, id) =>
-    state.findIndex((elemento) => elemento.id === id);
+    state.indexOf((elemento) => elemento.id === id);
 
   const [stateCart, dispatch] = useReducer((state, { type, payload }) => {
-    const posicion = idExists(state.productosEnCart, payload.id);
+    const posicion = idExists(state.productosEnCart, payload?.id || 0);
     let modificado = Object.assign({}, state.productosEnCart[posicion]);
     switch (type) {
       case "ADD_PRODUCT":

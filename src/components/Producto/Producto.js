@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Boton from "../common/Boton";
 import Counter from "../common/Counter";
-import { useContext } from "react";
 import { cart } from "../Cart/CartProvider";
-import productos from "../../productos";
+
+import { productoUnico } from "config/firebase/firestoreService";
 const Producto = ({
   match: {
     params: { id, categoria },
@@ -16,20 +16,20 @@ const Producto = ({
   const [terminar, setTerminar] = useState(false);
   const [counter, setCounter] = useState(1);
   useEffect(() => {
-    productos.then((res) => {
-      const producto = res.find((prod) => prod.id === id);
-      setProduct(producto);
-    });
+    cargaProducto(id);
   }, [id]);
 
+  const cargaProducto = async (id) => {
+    const data = await productoUnico(id);
+    setProduct(data);
+  };
   const finalizar = () => {
     dispatch({
       type: "ADD_PRODUCT",
       payload: {
-        id: product.id,
-        nombre: product.nombre,
+        ...product,
+        id: id,
         quantity: counter,
-        precio: product.precio,
       },
     });
     setCounter(1);

@@ -1,6 +1,6 @@
-import Boton from "../common/Boton";
+import { Link } from "react-router-dom";
 
-const Banner = ({ titulo, descuento, boton, className }) => {
+const Banner = ({ titulo, descuento, boton, className, categoria }) => {
   return (
     <div className={`banner banner-descuentos ${className}`}>
       <h1>{titulo}</h1>
@@ -9,7 +9,9 @@ const Banner = ({ titulo, descuento, boton, className }) => {
         <span>{descuento}</span>
         <span>Descuento</span>
       </div>
-      <Boton className="btn btn-white" content={boton} />
+      <Link to={`/${categoria}`} className="btn btn-white">
+        {boton}
+      </Link>
     </div>
   );
 };

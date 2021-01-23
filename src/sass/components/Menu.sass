@@ -61,20 +61,23 @@
             color: $blanco
         &-active
             left: 0
-        p
+        &-link
+            color: $negro
             cursor: pointer
             font-size: 25px
             font-weight: 100
             margin-top: 20px
             text-transform: uppercase
-            &:hover
-                color: $rojo
+            p
+                color: $negro
+                &:hover
+                    color: $rojo
         @include media('Desktop')
             background: none
             color: $negro
             flex-direction: row
             position: inherit
-            p
+            &-link
                 font-size: 12px
                 font-weight: 500
                 margin: 0

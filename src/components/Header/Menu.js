@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [active, setActive] = useState(false);
@@ -20,13 +21,18 @@ const Menu = () => {
             : "menu__navegacion menu__navegacion-active"
         }
       >
-        <p>Gabinetes</p>
-
-        <p>Tarjetas Madre</p>
-
-        <p>Procesadores</p>
-
-        <p>Memorias Ram</p>
+        <Link to={`/gabinetes`} className="menu__navegacion-link">
+          <p>Gabinetes</p>
+        </Link>
+        <Link to={`/tarjetas madre`} className="menu__navegacion-link">
+          <p>Tarjetas Madre</p>
+        </Link>
+        <Link to={`/procesadores`} className="menu__navegacion-link">
+          <p>Procesadores</p>
+        </Link>
+        <Link to={`/discos duro`} className="menu__navegacion-link">
+          <p>Discos duro</p>
+        </Link>
       </nav>
     </div>
   );

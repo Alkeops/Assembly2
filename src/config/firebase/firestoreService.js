@@ -12,3 +12,18 @@ export const cargarProductos = async () => {
   });
   return docs;
 };
+
+export const productoUnico = async (id) => {
+  const query = await computerRef.doc(id).get();
+  const data = query.data();
+  return data;
+};
+
+export const categoriaUnica = async (categoria) => {
+  const query = await computerRef.where("categoria", "==", categoria).get();
+  const docs = [];
+  query.forEach((doc) => {
+    docs.push({ ...doc.data(), id: doc.id });
+  });
+  return docs;
+};

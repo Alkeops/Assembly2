@@ -6,6 +6,9 @@ function Home() {
     <>
       <Publicidad />
       <SliderCategoria categoria="gabinetes" />
+      <SliderCategoria categoria="procesadores" />
+      <SliderCategoria categoria="discos duro" />
+      <SliderCategoria categoria="tarjetas madre" />
     </>
   );
 }
