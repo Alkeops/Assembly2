@@ -1,7 +1,7 @@
 import Boton from "components/common/Boton";
 import React from "react";
 
-const CartPayment = ({ cantidadArticulos, totales }) => {
+const CartPayment = ({ cantidadArticulos, totales, setOpen }) => {
   return (
     <div className={`cart__pago cart-payment`}>
       <h1 className="cart-payment__articulos">
@@ -12,7 +12,11 @@ const CartPayment = ({ cantidadArticulos, totales }) => {
         <span>{totales}</span>
       </div>
       <div className="cart-payment__boton">
-        <Boton className="btn btn-black" content="Comprar" />
+        <Boton
+          className="btn btn-black"
+          content="Comprar"
+          onClick={() => setOpen(true)}
+        />
       </div>
     </div>
   );

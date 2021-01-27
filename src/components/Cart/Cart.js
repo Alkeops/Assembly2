@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import CartForm from "./CartForm";
 import CartItem from "./CartItem";
 import CartPayment from "./CartPayment";
 import { cart } from "./CartProvider";
@@ -8,6 +9,7 @@ const Cart = () => {
   const { productosEnCart, cantidadArticulos } = useContext(cart).stateCart;
   const [totales, setTotales] = useState(0);
   const [carrito, setCarrito] = useState([]);
+  const [open, setOpen] = useState(false);
   const finalizar = () => {
     dispatch({
       type: "CLEAN_CART",
@@ -28,7 +30,11 @@ const Cart = () => {
   return (
     <div className="cart">
       {cantidadArticulos !== 0 ? (
-        <CartPayment cantidadArticulos={cantidadArticulos} totales={totales} />
+        <CartPayment
+          cantidadArticulos={cantidadArticulos}
+          totales={totales}
+          setOpen={setOpen}
+        />
       ) : (
         <h1 className="cart__vacio">Tu carrito esta vacio</h1>
       )}
@@ -50,6 +56,18 @@ const Cart = () => {
           </h1>
         )}
       </div>
+      {open && (
+        <CartForm
+          finalizar={finalizar}
+          open={open}
+          setOpen={setOpen}
+          dataFromCart={{
+            items: [...carrito],
+            total: totales,
+            date: new Date(),
+          }}
+        />
+      )}
     </div>
   );
 };

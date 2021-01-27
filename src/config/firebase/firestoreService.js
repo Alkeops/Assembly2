@@ -1,3 +1,4 @@
+import cuid from "cuid";
 import firebase from "./firebase";
 
 export const db = firebase.firestore();
@@ -26,4 +27,10 @@ export const categoriaUnica = async (categoria) => {
     docs.push({ ...doc.data(), id: doc.id });
   });
   return docs;
+};
+
+export const nuevaCompra = async (compra) => {
+  const idCompra = cuid().slice(-6);
+  await db.collection("compras").doc(idCompra).set(compra);
+  return idCompra;
 };
