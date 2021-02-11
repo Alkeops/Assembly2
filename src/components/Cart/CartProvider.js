@@ -9,8 +9,9 @@ const cart = createContext(initialState);
 const { Provider } = cart;
 
 const CartProvider = ({ children }) => {
-  const idExists = (state, id) =>
-    state.indexOf((elemento) => elemento.id === id);
+  const idExists = (state, id) => {
+    return state.findIndex((elemento) => elemento.id === id);
+  };
 
   const [stateCart, dispatch] = useReducer((state, { type, payload }) => {
     const posicion = idExists(state.productosEnCart, payload?.id || 0);

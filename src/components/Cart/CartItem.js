@@ -21,7 +21,7 @@ const CartItem = ({ precio, cantidad, nombre, id, dispatch, setTotales }) => {
           <span>Cantidad: </span>
           <button
             className="btn-cantidad menos"
-            onClick={() => modificarCarrito()}
+            onClick={() => modificarCarrito(false)}
           >
             -
           </button>

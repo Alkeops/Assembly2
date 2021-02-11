@@ -13,7 +13,6 @@ const Producto = ({
   const [product, setProduct] = useState([]);
   const { dispatch } = useContext(cart);
   const history = useHistory();
-  const [terminar, setTerminar] = useState(false);
   const [counter, setCounter] = useState(1);
   useEffect(() => {
     cargaProducto(id);
@@ -33,11 +32,8 @@ const Producto = ({
       },
     });
     setCounter(1);
-    setTerminar(true);
   };
-  const finalizarCompra = () => {
-    history.push("/cart");
-  };
+
   return (
     <div className="producto">
       <div className="producto__imagenes"></div>
@@ -45,21 +41,13 @@ const Producto = ({
         <h4 className="producto__compania">{product.compania}</h4>
         <h3 className="producto__nombre">{product.nombre}</h3>
         <span className="producto__precio">{product.precio}</span>
-        {terminar ? (
-          <Boton
-            content="Terminar Compra"
-            className="btn btn-black"
-            onClick={finalizarCompra}
-          />
-        ) : (
-          <Counter
-            stock={10}
-            initial={1}
-            onAdd={finalizar}
-            counter={counter}
-            setCounter={setCounter}
-          />
-        )}
+        <Counter
+          stock={10}
+          initial={1}
+          onAdd={finalizar}
+          counter={counter}
+          setCounter={setCounter}
+        />
       </div>
     </div>
   );
