@@ -21,16 +21,32 @@ const Menu = () => {
             : "menu__navegacion menu__navegacion-active"
         }
       >
-        <Link to={`/gabinetes`} className="menu__navegacion-link">
+        <Link
+          to={`/gabinetes`}
+          onClick={() => setActive(false)}
+          className="menu__navegacion-link"
+        >
           <p>Gabinetes</p>
         </Link>
-        <Link to={`/tarjetas madre`} className="menu__navegacion-link">
+        <Link
+          to={`/tarjetas madre`}
+          onClick={() => setActive(false)}
+          className="menu__navegacion-link"
+        >
           <p>Tarjetas Madre</p>
         </Link>
-        <Link to={`/procesadores`} className="menu__navegacion-link">
+        <Link
+          to={`/procesadores`}
+          onClick={() => setActive(false)}
+          className="menu__navegacion-link"
+        >
           <p>Procesadores</p>
         </Link>
-        <Link to={`/discos duro`} className="menu__navegacion-link">
+        <Link
+          to={`/discos duro`}
+          onClick={() => setActive(false)}
+          className="menu__navegacion-link"
+        >
           <p>Discos duro</p>
         </Link>
       </nav>
